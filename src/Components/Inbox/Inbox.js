@@ -1,19 +1,33 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 
 const Inbox = () => {
   const [sentEmail,setSentEmail]=useState([])
   const [recievedEmail,setRecievedEmail]=useState([])
 
+  //this is senderemail or logged in user
+  //this is senderemail or logged in user
   let senderEmail=useSelector(state=>state.auth.email)
   if(!senderEmail){
     senderEmail=localStorage.getItem('senderEmail')
   }
 async function sentHandler(){
+  //removind . from email
+  //removind . from email
+  let senderEmailFil = "";
+  for (let i = 0; i < senderEmail.length; i++) {
+    if (senderEmail[i] === ".") {
+      continue;
+    }
+    senderEmailFil = senderEmailFil + senderEmail[i];
+  }
+
+//get request for recieved emails
+//get request for recieved emails
 let arr=[]
-  const resp=await fetch('https://expensetracker-ff73b-default-rtdb.firebaseio.com/mailBox.json')
+  const resp=await fetch(`https://expensetracker-ff73b-default-rtdb.firebaseio.com/${senderEmailFil}/recievedEmail.json`)
   const data=await resp.json()
- 
+ console.log(data)
   for(let key in data){
 
     console.log(data[key])
@@ -29,20 +43,16 @@ let arr=[]
   //sentEmails Data
   //sentEmails Data
   //sentEmails Data
- const sentEmails= arr.filter((ele)=>{
-    return  ele.senderEmail===senderEmail
-  })
-  //recieved email Data
-  //recieved email Data
-  //recieved email Data
-  const recievedEmails=arr.filter((ele)=>{
-      return ele.recieverEmail
-  })
-  console.log(sentEmails,'this data is fitlered by email  ')
-  setSentEmail(sentEmails)
+  setRecievedEmail(arr)
+  // console.log(sentEmails,'this data is fitlered by email  ')
+  // setSentEmail(sentEmails)
   console.log(data)
 
 }
+console.log(recievedEmail)  
+useEffect(()=>{
+  sentHandler()
+},[])
 console.log(sentEmail)
   return (
     <div>

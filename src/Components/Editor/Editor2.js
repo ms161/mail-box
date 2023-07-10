@@ -11,9 +11,13 @@ const Editor2 = () => {
 
   const [sendEmailTo, setSendEmailTo] = useState("");
   console.log(convertToRaw(editorState.getCurrentContent()).blocks[0].text);
+  //this is senderemail or logged in user
+  //this is senderemail or logged in user
   let senderEmail = useSelector((state) => state.auth.email);
   senderEmail = localStorage.getItem("senderEmail");
   console.log(senderEmail);
+  //storing email message in object
+  //storing email message in object
   const emailObj = {
     senderEmail: senderEmail,
     desc: desc,
