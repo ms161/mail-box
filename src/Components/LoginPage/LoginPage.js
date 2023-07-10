@@ -2,13 +2,16 @@
 import React, { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import Authentication from '../Store/Authentication';
+import { authActions } from '../Store/Authentication';
 const LoginPage = () => {
     const [enteredEmail, setEnteredEmail] = useState();
     const [enteredPassword, setEnteredPassword] = useState();
     const [passwordMatch, setPasswordMatch] = useState(null);
     const [isLoading,setIsLoading]=useState(null)
     const navigate=useNavigate()
- 
+ const dispatch=useDispatch()
     const emailHandler = (e) => {
       setEnteredEmail(e.target.value);
     };
@@ -54,6 +57,8 @@ const LoginPage = () => {
           navigate('/home') 
           // ctx.onLogin(data.idToken)
           localStorage.setItem('token',data.idToken)
+          localStorage.setItem('senderEmail',data.email)
+          dispatch(authActions.email(data.email))
         
 
         }
