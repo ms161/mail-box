@@ -11,8 +11,8 @@ const EmaiLItems = (ele) => {
   if (!senderEmail) {
     senderEmail = localStorage.getItem("senderEmail");
   }
-  //patch request for unread 
-  //patch request for unread 
+  //patch request for unread//////////////////////////////////////////////////////////////////////////////////// 
+  //patch request for unread//////////////////////////////////////////////////////////////////////////////////// 
   async function unReadHandler(){
      //removind . from email
     //removind . from email
@@ -34,6 +34,33 @@ const EmaiLItems = (ele) => {
         console.log('response is ok')
     }
   }
+  //Delete an Email//////////////////////////////////////////////////////////////////////
+  //Delete an Email///////////////////////////////////////////////////////////////////////
+
+async function deleteApiRequest(){
+    let senderEmailFil = "";
+    for (let i = 0; i < senderEmail.length; i++) {
+      if (senderEmail[i] === ".") {
+        continue;
+      }
+      senderEmailFil = senderEmailFil + senderEmail[i];
+    }
+    const resp= await fetch(`https://expensetracker-ff73b-default-rtdb.firebaseio.com/${senderEmailFil}/recievedEmail/${ele.paramKey}.json`,{
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      
+    })
+}
+
+
+  
+  const deleteEmailHandler=e=>{
+    console.log('deletebtn clicked')
+    e.target.parentElement.parentElement.parentElement.remove()
+deleteApiRequest()
+  }
 const unread=e=>{
     unReadHandler()
 }
@@ -43,17 +70,17 @@ console.log(ele.unRead,'this is unread emailitmes')
    
   {ele.unRead&&  <div><BlueDot></BlueDot></div>}
         <div className="mt-4 w-full bg-blue-800">
+          <div onClick={unread} className="flex justify-between  bg-gray-300 p-4 rounded-xl ">
         <Link to={`/Message/${ele.paramKey}`}>
-          <div onClick={unread} className="flex justify-between bg-gray-300 p-4 rounded-xl ">
             <div>
               Recieved From:{ele.senderEmail}
               <p>{ele.desc}</p>
             </div>
+      </Link>
             <div>
-              <button className="bg-red-500 p-4 rounded-xl">Delete</button>
+              <button onClick={deleteEmailHandler} className="bg-red-500 p-4 rounded-xl">Delete</button>
             </div>
           </div>
-      </Link>
         </div>
        
    
