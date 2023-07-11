@@ -65,13 +65,13 @@ const Inbox = () => {
   }
   console.log(recievedEmail);
   useEffect(() => {
-// let a=setInterval(() => {
+let a=setInterval(() => {
   
   sentHandler()
-// }, 2000);
-// return (()=>{
-  // clearInterval(a)
-// })
+}, 2000);
+return (()=>{
+  clearInterval(a)
+})
   }, []);
 
 
@@ -86,9 +86,7 @@ const Inbox = () => {
       <div className="text-2xl text-white">My Inbox: {unReadMessagesCount}</div>
       {recievedEmail.map((ele) => (
         <>
-        <div>
-
-        </div>
+       
         <EmaiLItems  
         senderEmail={ele.senderEmail}
         desc={ele.desc}
