@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import ViewMessage from '../Inbox/ViewMessage'
 const HomePage = () => {
   return (
     <div className='text-2xl'>
@@ -9,6 +10,7 @@ const HomePage = () => {
         <Link to={'/inbox'}>
         <div className='mt-5'><button className='bg-green-500 p-4 rounded-xl'>Check Your Inbox</button></div>
         </Link>
+      
     </div>
   )
 }

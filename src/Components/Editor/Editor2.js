@@ -4,10 +4,12 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Header from "../Header/Header";
 
 const Editor2 = () => {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
   const [desc, setDesc] = useState("");
+  const [isSending,setIsSending]=useState('')
 
   const [sendEmailTo, setSendEmailTo] = useState("");
   console.log(convertToRaw(editorState.getCurrentContent()).blocks[0].text);
@@ -22,6 +24,7 @@ const Editor2 = () => {
     senderEmail: senderEmail,
     desc: desc,
     message: convertToRaw(editorState.getCurrentContent()).blocks[0].text,
+    unRead:true 
   };
 
   const onEditorStateChange = (editorState) => {
@@ -41,6 +44,7 @@ const Editor2 = () => {
   //  console.log(message)
 
   const submitHandler = (e) => {
+    setIsSending('Sending...')
     postData();
     localStorage.setItem("email", sendEmailTo);
   };
@@ -88,6 +92,10 @@ const Editor2 = () => {
 
 
       const id = await resp.json();
+      setIsSending('Sent Successfully :)')
+      setTimeout(() => {
+        setIsSending(null)
+      }, 4000);
       console.log(id);
     } catch (err) {}
   }
@@ -107,27 +115,43 @@ const Editor2 = () => {
   }
 
   return (
-    <div className="mt-1 ml-5">
-      <div className="fixed right-[40rem] bg-green-700 p-2 rounded-xl">
+    <div className="mt-1 ">
+      {/* <div className="flex rounded-xl border gap-3 bg-gray-300 p-4 items-center">
+
+      <div className=" right-[40rem] bg-green-700 p-2 t-0 rounded-xl">
         <Link to={"/home"}>Go TO HomePage</Link>
       </div>
-      <div className=" border-gray-500 pb-3 w-[98%]">
-        <span>To</span>{" "}
+       <Link to='/editor'>
+        <div><button className='bg-blue-700 p-2 rounded-2xl'>Compose Email</button></div>
+        </Link>
+        <Link to={'/inbox'}>
+        <div ><button className='bg-green-500 p-2 rounded-xl'>Check Your Inbox</button></div>
+        </Link>
+      </div> */}
+      <Header></Header>
+      <div className="border w-[70%] flex flex-col justify-center p-3 items-center rounded-xl m-auto mt-8  border-gray-500">
+
+    <p className="font-bold text-xl font-serif">Compose Email</p>
+      <div className=" border-gray-500 flex flex-col mt-5 pb-3 w-[98%]">
+        
+        <label>Sent To:</label>
         <input
+        id="sent"
         placeholder="Enter Email"
           type="email"
           onChange={emailHandler}
-          className="bg-white border border-black rounded-2xl pl-2 pr-2"
+          className="bg-white border p-3 border-gray-400 rounded-2xl pl-2 pr-2"
         ></input>
       </div>
       <div className="w-[98%] pb-4 mt-3">
+        <label>Subject:</label>
         <input
         placeholder="Enter Subject"
           onChange={descHandler}
-          className="w-full bg-white border rounded-xl border-black p-3 active:border-none "
+          className="w-full bg-white border rounded-xl border-gray-400 p-3 active:border-none "
         ></input>
       </div>
-      <div className=" border p-2 w-[98%] rounded-xl border-black">
+      <div className=" border p-2 w-[98%] rounded-xl border-gray-400">
         <Editor
         
           editorState={editorState}
@@ -139,8 +163,9 @@ const Editor2 = () => {
         className="bg-green-500 p-2 pl-10 pr-10 text-white rounded-2xl"
         onClick={submitHandler}
       >
-        Send Email
+       {isSending?`${isSending}`:'Send Email'}
       </button>
+      </div>
     </div>
   );
 };
