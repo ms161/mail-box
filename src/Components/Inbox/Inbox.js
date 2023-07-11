@@ -58,23 +58,32 @@ const Inbox = () => {
     //sentEmails Data
     //sentEmails Data
     setRecievedEmail(arr);
+    console.log(recievedEmail)
     // console.log(sentEmails,'this data is fitlered by email  ')
     // setSentEmail(sentEmails)
     console.log(data);
   }
   console.log(recievedEmail);
   useEffect(() => {
-    sentHandler();
+// let a=setInterval(() => {
+  
+  sentHandler()
+// }, 2000);
+// return (()=>{
+  // clearInterval(a)
+// })
   }, []);
+
+
   console.log(sentEmail);
   let params=useParams()
   
   return (
-    <div className="">
+    <div className="bg-gradient-to-t from-orange-400 to-sky-400 h-screen">
 <Header></Header>
     <div className="border border-black mt-2 w-[60%] m-auto p-4">
       
-      <div className="text-2xl">My Inbox: {unReadMessagesCount}</div>
+      <div className="text-2xl text-white">My Inbox: {unReadMessagesCount}</div>
       {recievedEmail.map((ele) => (
         <>
         <div>

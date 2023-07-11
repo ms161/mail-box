@@ -1,13 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import Header from '../Header/Header'
+import React from 'react'
+import { useState } from 'react'
 import { useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
+import { UseSelector } from 'react-redux/es/hooks/useSelector'
+import { useEffect } from 'react'
+import Header from '../Header/Header'
+const SentViewMEssage = () => {
 
-const ViewMessage = (props) => {
-  const [recievedMessage,setrecievedMessage]=useState([])
+    const [recievedMessage,setrecievedMessage]=useState([])
     let param=useParams()
    console.log(param.id)
-   console.log(props,'this is props in viewMessage')
+//    console.log(props,'this is props in viewMessage')
 
 //this is senderemail or logged in user
   //this is senderemail or logged in user
@@ -24,7 +27,7 @@ async function getData(){
     senderEmailFil = senderEmailFil + senderEmail[i];
   }
   const resp = await fetch(
-    `https://expensetracker-ff73b-default-rtdb.firebaseio.com/${senderEmailFil}/recievedEmail.json`
+    `https://expensetracker-ff73b-default-rtdb.firebaseio.com/${senderEmailFil}/sentEmails.json`
   );
   const data = await resp.json();
   console.log(data);
@@ -44,7 +47,7 @@ async function getData(){
 }
 
 const filteredMessage=recievedMessage.filter((ele)=>{
-  return ele.id1===param.id 
+  return ele.id1===param.sendId 
 })
 let f2={...filteredMessage[0]}
 console.log(f2)
@@ -53,10 +56,9 @@ console.log(filteredMessage)
 useEffect(()=>{
   getData()
 },[])
-
   return (
     <div>
-<Header></Header>
+        <Header></Header>
     <div className='border w-[70%] m-auto p-10 rounded-xl mt-5'>
   
     <div className='w-[95%] bg-gray-300 m-auto p-4 rounded-xl'>From:{f2.senderEmail}</div>
@@ -65,7 +67,8 @@ useEffect(()=>{
     {/* why the hejadfljdlf */}
     </div>
     </div>
+   
   )
 }
 
-export default ViewMessage
+export default SentViewMEssage

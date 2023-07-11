@@ -1,12 +1,13 @@
 import React from 'react'
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SignUpPage = () => {
     const [enteredEmail, setEnteredEmail] = useState('');
   const [enteredPassword, setEnteredPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [passwordMatch, setPasswordMatch] = useState(null);
+  const navigate=useNavigate()
 
   const emailHandler = (e) => {
     setEnteredEmail(e.target.value);
@@ -63,6 +64,8 @@ const SignUpPage = () => {
   
       if(resp.ok){
         console.log('sign up successfull')
+        navigate('/home')
+
       }
       else{
         setPasswordMatch(data.error.message)

@@ -115,19 +115,8 @@ const Editor2 = () => {
   }
 
   return (
-    <div className="mt-1 ">
-      {/* <div className="flex rounded-xl border gap-3 bg-gray-300 p-4 items-center">
-
-      <div className=" right-[40rem] bg-green-700 p-2 t-0 rounded-xl">
-        <Link to={"/home"}>Go TO HomePage</Link>
-      </div>
-       <Link to='/editor'>
-        <div><button className='bg-blue-700 p-2 rounded-2xl'>Compose Email</button></div>
-        </Link>
-        <Link to={'/inbox'}>
-        <div ><button className='bg-green-500 p-2 rounded-xl'>Check Your Inbox</button></div>
-        </Link>
-      </div> */}
+    <div className=" bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-gray-900 via-gray-100 to-gray-900 h-screen">
+    
       <Header></Header>
       <div className="border w-[70%] flex flex-col justify-center p-3 items-center rounded-xl m-auto mt-8  border-gray-500">
 

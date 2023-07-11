@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import ViewMessage from "./ViewMessage";
 import BlueDot from "../BlueDot";
 import { useSelector } from "react-redux";
+
 const EmaiLItems = (ele) => {
   let params = useParams();
+  // const [random,setRandomState]=useState({  })
   console.log(ele.paramKey,'this is firebase key');
   let senderEmail = useSelector((state) => state.auth.email);
   if (!senderEmail) {
@@ -52,15 +54,15 @@ async function deleteApiRequest(){
         },
       
     })
-}
-
-
-  
+}  
   const deleteEmailHandler=e=>{
     console.log('deletebtn clicked')
     e.target.parentElement.parentElement.parentElement.remove()
 deleteApiRequest()
   }
+
+  
+  
 const unread=e=>{
     unReadHandler()
 }
@@ -76,12 +78,16 @@ console.log(ele.unRead,'this is unread emailitmes')
               Recieved From:{ele.senderEmail}
               <p>{ele.desc}</p>
             </div>
+            {console.log('line 79')}
+         
+          {console.log('line 83')}
       </Link>
             <div>
               <button onClick={deleteEmailHandler} className="bg-red-500 p-4 rounded-xl">Delete</button>
             </div>
           </div>
         </div>
+      
        
    
     </div>

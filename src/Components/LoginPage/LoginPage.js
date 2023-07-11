@@ -59,7 +59,7 @@ const LoginPage = () => {
           localStorage.setItem('token',data.idToken)
           localStorage.setItem('senderEmail',data.email)
           dispatch(authActions.email(data.email))
-        
+          dispatch(authActions.isLoggedIn())
 
         }
         else{
