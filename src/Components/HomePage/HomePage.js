@@ -11,7 +11,7 @@ const HomePage = () => {
      
      
     </div>
-    <div className='text-8xl  text-center mt-56   '>
+    <div className='animate__animated animate__backInLeft  text-8xl  text-center mt-56   '>
 Welcome To MailBox
     </div>
     </div>

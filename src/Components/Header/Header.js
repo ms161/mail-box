@@ -11,7 +11,7 @@ const logOutHandler=e=>{
 
   return (
     <div>
-         <div className="flex rounded-xl gap-3  p-4 items-center">
+         <div className="flex rounded-xl gap-3 animate__animated animate__fadeInDown p-4 items-center">
 
 <div className=" right-[40rem] bg-green-700 text-white font-bold  p-2 t-0 rounded-xl">
   <Link to={"/home"}>Go TO HomePage</Link>

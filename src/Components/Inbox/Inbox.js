@@ -65,13 +65,14 @@ const Inbox = () => {
   }
   console.log(recievedEmail);
   useEffect(() => {
-let a=setInterval(() => {
+// let a=setInterval(() => {
   
   sentHandler()
-}, 2000);
-return (()=>{
-  clearInterval(a)
-})
+// }, 2000);
+// return (()=>{
+  // clearInterval(a)
+// })
+
   }, []);
 
 
@@ -79,11 +80,11 @@ return (()=>{
   let params=useParams()
   
   return (
-    <div className="bg-gradient-to-t from-orange-400 to-sky-400 h-screen">
+    <div className=" bg-gradient-to-t from-orange-400 to-sky-400 h-screen">
 <Header></Header>
-    <div className="border border-black mt-2 w-[60%] m-auto p-4">
+    <div className=" animate__animated animate__backInLeft  border border-black mt-2 w-[60%] m-auto p-4">
       
-      <div className="text-2xl text-white">My Inbox: {unReadMessagesCount}</div>
+      <div className="text-2xl text-white">Unread Emails: {unReadMessagesCount}</div>
       {recievedEmail.map((ele) => (
         <>
        

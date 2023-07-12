@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Authentication from '../Store/Authentication';
 import { authActions } from '../Store/Authentication';
+import 'animate.css';
 const LoginPage = () => {
     const [enteredEmail, setEnteredEmail] = useState();
     const [enteredPassword, setEnteredPassword] = useState();
@@ -78,7 +79,7 @@ const LoginPage = () => {
     }
   return (
     <div className=" h-screen bg-gradient-to-b  from-blue-500 via-purple-500 to-pink-500m auto mt-[15re] w-screen bg-green-400 flex flex-col gap-5 justify-center items-center">
-    <div className=" animate__animated animate__backInRight animate__slow  flex flex-col bg-slate-900-800  border rounded-lg border-gray-500 shadow-2xl gap-5 p-[10rem] ">
+    <div className="animate__animated animate__backInLeft  flex flex-col bg-slate-900-800  border rounded-lg border-gray-500 shadow-2xl gap-5 p-[10rem] ">
       <div className="text-center font-bold text-2xl text-red-200 ">
         Log In
       </div>
@@ -88,7 +89,7 @@ const LoginPage = () => {
       <div className=" w-[20rem] ">
         <input
           onChange={emailHandler}
-          className="p-4 w-full  text-white shadow-2xl rounded-lg "
+          className="p-4 w-full font-serif font-bold   shadow-2xl rounded-lg "
           type="text"
           placeholder="Email"
           required
@@ -97,7 +98,7 @@ const LoginPage = () => {
       <div className=" w-[20rem] mt-4 ">
         <input
           onChange={passwordHandler}
-          className="p-4 w-full text-white shadow-2xl rounded-lg "
+          className="p-4 w-full font-serif font-bold   shadow-2xl rounded-lg "
           type="password"
           placeholder="Password"
           required
@@ -122,7 +123,7 @@ const LoginPage = () => {
       {/* </Link>  */}
       </div>
     </div>
-    <div className='animate__animated animate__backInLeft animate__slow'>
+    <div className='animate__animated animate__backInLeft  '>
       <button className=" bg-green-400 p-4 relative hover:animate-none animate-pulse bg-gradient-to-r from-yellow-400 to-red-500 hover:from-pink-500 hover:to-purple-500 text-white font-bold py-3 px-8 rounded-full shadow-lg overflow-hidden transition-all duration-500 transform hover:scale-110 hover:bg-green-900 hover:text-white  ">
       <Link to={'/'}>
       Dont't Have an account? SignUp 

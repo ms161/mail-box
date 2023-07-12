@@ -36,8 +36,8 @@ const SentEmail = (ele) => {
     <div>
 
          
-<div className="mt-4 w-full bg-blue-800">
-          <div className="flex justify-between  bg-gray-300 p-4 rounded-xl ">
+<div className="mt-4 w-full">
+          <div className="animate__animated animate__backInLeft  flex justify-between  bg-gray-300 p-4 rounded-xl ">
         <Link to={`/sentMessage/${ele.paramKey}`}>
             <div>
               Recieved From:{ele.senderEmail}

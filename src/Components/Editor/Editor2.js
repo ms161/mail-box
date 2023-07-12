@@ -118,7 +118,7 @@ const Editor2 = () => {
     <div className=" bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-gray-900 via-gray-100 to-gray-900 h-screen">
     
       <Header></Header>
-      <div className="border w-[70%] flex flex-col justify-center p-3 items-center rounded-xl m-auto mt-8  border-gray-500">
+      <div className=" animate__animated animate__fadeInTopRight   border w-[70%] flex flex-col justify-center p-3 items-center rounded-xl m-auto mt-8  border-gray-500">
 
     <p className="font-bold text-xl font-serif">Compose Email</p>
       <div className=" border-gray-500 flex flex-col mt-5 pb-3 w-[98%]">
